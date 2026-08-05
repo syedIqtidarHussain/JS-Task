@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Tools</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <h1>Mini Tools</h1>
+
+  <section class="card">
+    <h2>Age to Days Converter</h2>
+    <label>Enter Age (years): <input type="number" id="ageInput"></label>
+    <p>Result: <span id="ageResult">0</span> days</p>
+  </section>
+
+  <section class="card">
+    <h2>Hours to Seconds Converter</h2>
+    <label>Enter Hours: <input type="number" id="hoursInput"></label>
+    <p>Result: <span id="hoursResult">0</span> seconds</p>
+  </section>
+
+  <section class="card">
+    <h2>Find Next Number</h2>
+
+    <h3>Scenario A: Next number in an array</h3>
+    <label>Array (comma separated): <input type="text" id="arrayInput" placeholder="e.g. 4,8,15,16,23"></label><br>
+    <label>Find number after: <input type="number" id="arrayTarget"></label>
+    <button id="arrayFindBtn">Find</button>
+    <p>Next Number: <span id="arrayResult">-</span></p>
+
+    <h3>Scenario B: Next number from a single value</h3>
+    <label>Enter a value (int or float): <input type="number" step="any" id="singleInput"></label>
+    <button id="singleFindBtn">Find</button>
+    <p>Next Number: <span id="singleResult">-</span></p>
+  </section>
+
+  <section class="card">
+    <h2>Name Capitalizer</h2>
+    <label>Enter name (lowercase only): <input type="text" id="nameInput" pattern="[a-z]+"></label>
+    <p>Result: <span id="nameResult">-</span></p>
+  </section>
+
+  <section class="card">
+    <h2>BMI Calculator</h2>
+    <label>Weight (kg): <input type="number" id="weightInput"></label><br>
+    <label>Height (m): <input type="number" step="any" id="heightInput"></label>
+    <button id="bmiBtn">Calculate BMI</button>
+    <p>Result: <span id="bmiResult">-</span></p>
+  </section>
+
+  <section class="card">
+    <h2>Random Array - First & Last Element</h2>
+    <button id="generateBtn">Generate Random Array</button>
+    <p>Array: <span id="arrayDisplay">-</span></p>
+    <p>First Element: <span id="firstResult">-</span> | Last Element: <span id="lastResult">-</span></p>
+  </section>
+
+  <section class="card">
+    <h2>Add Two Numbers</h2>
+    <label>Enter First Number <input type="number" id="num1"></label><br>
+    <label>Enter Second Number <input type="number" id="num2"></label><br>
+    <label>Result <input type="text" id="sumResult" value="NaN" readonly></label>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+    </html>
