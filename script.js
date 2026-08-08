@@ -1,3 +1,21 @@
+/* Scroll reveal animation for cards */
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+document.querySelectorAll('.card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 60}ms`;
+  revealObserver.observe(card);
+});
+
 /* 1. Age to Days Converter */
 const ageInput = document.getElementById('ageInput');
 const ageResult = document.getElementById('ageResult');
