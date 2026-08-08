@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
   background: #f4f6f9;
@@ -30,17 +34,37 @@ body {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border: 1px solid #eaeaea;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  box-shadow: 0 10px 24px rgba(79, 110, 247, 0.12);
+  border-color: #dde3fb;
+}
+
+.card .desc {
+  min-height: 34px;
 }
 
 .card h2 {
@@ -54,6 +78,12 @@ body {
   color: #777;
   margin-bottom: 18px;
   line-height: 1.4;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .field {
@@ -70,18 +100,20 @@ body {
 
 .field input {
   width: 100%;
-  padding: 10px 12px;
+  height: 42px;
+  padding: 0 12px;
   border: 1px solid #d8dbe0;
   border-radius: 8px;
   font-size: 14px;
   background: #fafbfc;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .field input:focus {
   outline: none;
   border-color: #4f6ef7;
   background: #fff;
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.15);
 }
 
 .field input[readonly] {
@@ -101,8 +133,8 @@ body {
 
 .action-btn {
   width: 100%;
-  padding: 10px 12px;
-  background: #4f6ef7;
+  height: 42px;
+  background: linear-gradient(135deg, #5b7bff, #4f6ef7);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -110,11 +142,20 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 14px;
-  transition: background 0.15s ease;
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 12px rgba(79, 110, 247, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .action-btn:hover {
-  background: #3a58e0;
+  background: linear-gradient(135deg, #4f6ef7, #3a58e0);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(79, 110, 247, 0.35);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(79, 110, 247, 0.3);
 }
 
 .hint {
@@ -127,25 +168,32 @@ body {
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
+  background: #f0f2f5;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 .tab-btn {
   flex: 1;
-  padding: 8px;
-  border: 1px solid #d8dbe0;
-  background: #fafbfc;
-  border-radius: 8px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 7px;
   font-size: 13px;
   font-weight: 600;
-  color: #555;
+  color: #666;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #4f6ef7;
 }
 
 .tab-btn.active {
-  background: #4f6ef7;
-  color: #fff;
-  border-color: #4f6ef7;
+  background: #ffffff;
+  color: #4f6ef7;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .tab-content {
