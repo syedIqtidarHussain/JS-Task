@@ -2,68 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mini Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Mini Tools</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Mini Tools</h1>
+  <header class="page-header">
+    <h1>JavaScript Mini Tools</h1>
+    <p>A collection of small interactive utilities built with vanilla JavaScript.</p>
+  </header>
 
-  <section class="card">
-    <h2>Age to Days Converter</h2>
-    <label>Enter Age (years): <input type="number" id="ageInput"></label>
-    <p>Result: <span id="ageResult">0</span> days</p>
-  </section>
+  <main class="grid">
 
-  <section class="card">
-    <h2>Hours to Seconds Converter</h2>
-    <label>Enter Hours: <input type="number" id="hoursInput"></label>
-    <p>Result: <span id="hoursResult">0</span> seconds</p>
-  </section>
+    <!-- 1. Age to Days Converter -->
+    <section class="card">
+      <h2>Age to Days Converter</h2>
+      <p class="desc">Enter your age in years to see it converted into days.</p>
+      <div class="field">
+        <label for="ageInput">Age (years)</label>
+        <input type="number" id="ageInput" placeholder="e.g. 21">
+      </div>
+      <div class="field">
+        <label>Result</label>
+        <input type="text" id="ageResult" readonly placeholder="0 days">
+      </div>
+    </section>
 
-  <section class="card">
-    <h2>Find Next Number</h2>
+    <!-- 2. Hours to Seconds Converter -->
+    <section class="card">
+      <h2>Hours to Seconds Converter</h2>
+      <p class="desc">Enter hours to see the equivalent number of seconds.</p>
+      <div class="field">
+        <label for="hoursInput">Hours</label>
+        <input type="number" id="hoursInput" placeholder="e.g. 2">
+      </div>
+      <div class="field">
+        <label>Result</label>
+        <input type="text" id="hoursResult" readonly placeholder="0 seconds">
+      </div>
+    </section>
 
-    <h3>Scenario A: Next number in an array</h3>
-    <label>Array (comma separated): <input type="text" id="arrayInput" placeholder="e.g. 4,8,15,16,23"></label><br>
-    <label>Find number after: <input type="number" id="arrayTarget"></label>
-    <button id="arrayFindBtn">Find</button>
-    <p>Next Number: <span id="arrayResult">-</span></p>
+    <!-- 3. Find Next Number -->
+    <section class="card">
+      <h2>Find Next Number</h2>
+      <p class="desc">Search for a number inside an array and get the element next to it, or enter a single value to get its next number (integer or float aware).</p>
 
-    <h3>Scenario B: Next number from a single value</h3>
-    <label>Enter a value (int or float): <input type="number" step="any" id="singleInput"></label>
-    <button id="singleFindBtn">Find</button>
-    <p>Next Number: <span id="singleResult">-</span></p>
-  </section>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="arrayTab">From Array</button>
+        <button class="tab-btn" data-tab="singleTab">Single Value</button>
+      </div>
 
-  <section class="card">
-    <h2>Name Capitalizer</h2>
-    <label>Enter name (lowercase only): <input type="text" id="nameInput" pattern="[a-z]+"></label>
-    <p>Result: <span id="nameResult">-</span></p>
-  </section>
+      <div class="tab-content active" id="arrayTab">
+        <div class="field">
+          <label for="arrayInput">Array (comma separated)</label>
+          <input type="text" id="arrayInput" placeholder="e.g. 4, 8, 15, 16, 23">
+        </div>
+        <div class="field">
+          <label for="arrayTarget">Find number next to</label>
+          <input type="number" id="arrayTarget" placeholder="e.g. 15">
+        </div>
+        <button class="action-btn" id="arrayFindBtn">Find</button>
+        <div class="field">
+          <label>Result</label>
+          <input type="text" id="arrayResult" readonly placeholder="—">
+        </div>
+      </div>
 
-  <section class="card">
-    <h2>BMI Calculator</h2>
-    <label>Weight (kg): <input type="number" id="weightInput"></label><br>
-    <label>Height (m): <input type="number" step="any" id="heightInput"></label>
-    <button id="bmiBtn">Calculate BMI</button>
-    <p>Result: <span id="bmiResult">-</span></p>
-  </section>
+      <div class="tab-content" id="singleTab">
+        <div class="field">
+          <label for="singleInput">Enter a number</label>
+          <input type="text" id="singleInput" placeholder="e.g. 7 or 7.5">
+        </div>
+        <button class="action-btn" id="singleFindBtn">Find Next</button>
+        <div class="field">
+          <label>Result</label>
+          <input type="text" id="singleResult" readonly placeholder="—">
+        </div>
+      </div>
+    </section>
 
-  <section class="card">
-    <h2>Random Array - First & Last Element</h2>
-    <button id="generateBtn">Generate Random Array</button>
-    <p>Array: <span id="arrayDisplay">-</span></p>
-    <p>First Element: <span id="firstResult">-</span> | Last Element: <span id="lastResult">-</span></p>
-  </section>
+    <!-- 4. Name Capitalizer -->
+    <section class="card">
+      <h2>Name Capitalizer</h2>
+      <p class="desc">Type your name in lowercase only. It will be displayed with the first letter capitalised.</p>
+      <div class="field">
+        <label for="nameInput">Name (lowercase only)</label>
+        <input type="text" id="nameInput" placeholder="e.g. iqtidar">
+      </div>
+      <div class="field">
+        <label>Result</label>
+        <input type="text" id="nameResult" readonly placeholder="—">
+      </div>
+      <p class="hint" id="nameHint"></p>
+    </section>
 
-  <section class="card">
-    <h2>Add Two Numbers</h2>
-    <label>Enter First Number <input type="number" id="num1"></label><br>
-    <label>Enter Second Number <input type="number" id="num2"></label><br>
-    <label>Result <input type="text" id="sumResult" value="NaN" readonly></label>
-  </section>
+    <!-- 5. BMI Calculator -->
+    <section class="card">
+      <h2>BMI Calculator</h2>
+      <p class="desc">Enter your weight and height to calculate your Body Mass Index.</p>
+      <div class="field">
+        <label for="weightInput">Weight (kg)</label>
+        <input type="number" id="weightInput" placeholder="e.g. 65">
+      </div>
+      <div class="field">
+        <label for="heightInput">Height (m)</label>
+        <input type="number" id="heightInput" placeholder="e.g. 1.7" step="0.01">
+      </div>
+      <button class="action-btn" id="bmiBtn">Calculate BMI</button>
+      <div class="field">
+        <label>Result</label>
+        <input type="text" id="bmiResult" readonly placeholder="—">
+      </div>
+      <p class="hint" id="bmiCategory"></p>
+    </section>
+
+    <!-- 6. Random Array First & Last -->
+    <section class="card">
+      <h2>Random Array Generator</h2>
+      <p class="desc">Generate a random array, then instantly pick its first and last elements.</p>
+      <button class="action-btn" id="generateArrayBtn">Generate Array</button>
+      <div class="field">
+        <label>Generated Array</label>
+        <input type="text" id="generatedArray" readonly placeholder="—">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>First Element</label>
+          <input type="text" id="firstEl" readonly placeholder="—">
+        </div>
+        <div class="field">
+          <label>Last Element</label>
+          <input type="text" id="lastEl" readonly placeholder="—">
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Live Addition -->
+    <section class="card">
+      <h2>Live Number Adder</h2>
+      <p class="desc">Enter two integers. The result updates automatically as you type, using event handling.</p>
+      <div class="field">
+        <label for="num1">Enter First Number</label>
+        <input type="number" id="num1" placeholder="e.g. 2">
+      </div>
+      <div class="field">
+        <label for="num2">Enter Second Number</label>
+        <input type="number" id="num2" placeholder="e.g. 3">
+      </div>
+      <div class="field">
+        <label>Result</label>
+        <input type="text" id="sumResult" readonly placeholder="NaN">
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>Built for Codematics internship task set.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
-    </html>
+</html>
